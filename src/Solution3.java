@@ -28,9 +28,11 @@ public class Solution3 {
      * @data 2022/6/6
      */
     public static void dfs(int cur,boolean[] visited,int[] sons,int distance,int count) {
+        int[][] matrix = pathData.getMatrix();
+        int N = pathData.getN();
         // 经过了所有顶点 找到了一条路
-        if(count==visited.length){
-            System.out.print("找到一条路径，"+"距离为："+distance);
+        if(count==visited.length && matrix[cur][0]!=N){
+            System.out.print("找到一条路径，"+"距离为："+(distance+matrix[cur][0]));
             System.out.print(" 路径是：1");
             int index = 0;
             // 打印路径
@@ -38,10 +40,9 @@ public class Solution3 {
                 System.out.print(" "+(sons[index]+1));
                 index = sons[index];
             }
-            System.out.println("");
+            System.out.println(" 1");
         }
-        int[][] matrix = pathData.getMatrix();
-        int N = pathData.getN();
+
         // 遍历没经过的顶点
         for (int i = 0; i < visited.length; i++) {
             // 没有访问过 而且能够直达
